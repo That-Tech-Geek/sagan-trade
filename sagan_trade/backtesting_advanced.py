@@ -696,6 +696,7 @@ class MonteCarloBacktester(BaseBacktester):
         costs = turnover * (self.config.commission + self.config.slippage)
         return port_returns - costs
 
+
 # Utility functions
 def compute_performance_metrics(
     returns: pd.Series, risk_free: float = 0.02, periods_per_year: int = 252
