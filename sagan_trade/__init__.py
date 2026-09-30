@@ -16,8 +16,8 @@ from .backtest_engine import BacktestEngine
 from .backtest_engine import BacktestResult as BacktestResultSimple
 from .backtesting_advanced import (
     AggregatedBacktestResult,
-    BacktestMethod,
     BacktestConfig,
+    BacktestMethod,
     BacktestResult,
     CombinatorialPurgedCVBacktester,
     MonteCarloBacktester,
