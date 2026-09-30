@@ -35,8 +35,8 @@ class SymbolicRegressor:
             "Momentum_Volume_Signal": {
                 "func": lambda df, p: (
                     p[0]
-                    * (df["Close"] - df["Close"].shift(10).bfill())
-                    * np.log(df["Volume"] + 1e-4)
+                    * (df["Close"] - df["Close"].shift(10))
+                    * np.log(df["Volume"].clip(lower=1e-4))
                 ),
                 "num_params": 1,
                 "latex": "c_1 \\cdot \\Delta_{10} P_t \\cdot \\ln(V_t)",
@@ -177,6 +177,7 @@ class SymbolicRegressor:
 
         self.best_formula_name = best_name
         self.fitted_params = best_params
+        self.validation_mse = best_validation_mse
 
         print(f"Discovered Symbolic Strategy: {self.best_formula_name}")
         print(f"Formula Equation (LaTeX): {self.formulas[self.best_formula_name]['latex']}")
