@@ -17,6 +17,7 @@ from .backtest_engine import BacktestResult as BacktestResultSimple
 from .backtesting_advanced import (
     AggregatedBacktestResult,
     BacktestConfig,
+    BacktestMethod,
     BacktestResult,
     CombinatorialPurgedCVBacktester,
     MonteCarloBacktester,
@@ -158,6 +159,7 @@ __all__ = [
     "compare_execution_models",
     # Advanced Backtesting
     "BacktestConfig",
+    "BacktestMethod",
     "BacktestResult",
     "AggregatedBacktestResult",
     "WalkForwardBacktester",
