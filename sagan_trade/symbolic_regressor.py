@@ -152,10 +152,15 @@ class SymbolicRegressor:
             validation_frame = self.data.loc[validation_index]
             validation_y = y_series.loc[validation_index].to_numpy(dtype=float)
 
-            def loss_func(params, _func=func):
-                pred = np.asarray(_func(train_frame, params), dtype=float)
+            def loss_func(
+                params,
+                _func=func,
+                _train_frame=train_frame,
+                _train_y=train_y,
+            ):
+                pred = np.asarray(_func(_train_frame, params), dtype=float)
                 pred = np.nan_to_num(pred, nan=0.0, posinf=0.0, neginf=0.0)
-                return float(np.mean((train_y - pred) ** 2))
+                return float(np.mean((_train_y - pred) ** 2))
 
             res = minimize(
                 loss_func, np.zeros(num_params, dtype=float), method="Nelder-Mead",
